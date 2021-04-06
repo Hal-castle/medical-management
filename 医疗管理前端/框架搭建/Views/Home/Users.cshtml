@@ -1,0 +1,460 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>用户管理</title>
+    <link href="~/css/main.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/element-ui/theme-chalk/index.css" rel="stylesheet" />
+    <script src="~/lib/vue/vue.js"></script>
+    <script src="//unpkg.com/element-ui@2.15.1/lib/index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!--头像的样式-->
+    <style>
+        .avatar-uploader .el-upload {
+            border: 1px dashed #d9d9d9;
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .avatar-uploader .el-upload:hover {
+                border-color: #409EFF;
+            }
+
+        .avatar-uploader-icon {
+            font-size: 28px;
+            color: #8c939d;
+            width: 178px;
+            height: 178px;
+            line-height: 178px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 178px;
+            height: 178px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <el-button type="success" v-on:click="AddFormVisible = true">添加</el-button>
+        <el-button type="danger" v-on:click="AllDel" plain>批量删除</el-button>
+        <!--显示表格-->
+        <template>
+            <input type="hidden" v-model="form.user_photo" />
+            <el-table :data="tableData.filter(data => !search || data.user_Account.toLowerCase().includes(search.toLowerCase()))"
+                      @@selection-change="handleSelectionChange"
+                      style="width: 100%" v-loading="loading">
+                <el-table-column type="selection"
+                                 width="55">
+                </el-table-column>
+                <el-table-column type="index"
+                                 :index="indexMethod">
+                </el-table-column>
+                <el-table-column label="用户账号"
+                                 width="180">
+                    <template slot-scope="scope">
+                        <span style="margin-left: 10px">{{ scope.row.user_Account }}</span>
+                    </template>
+                </el-table-column>
+                <el-table-column label="用户密码"
+                                 width="180">
+                    <template slot-scope="scope">
+                        <span style="margin-left: 10px">{{ scope.row.user_Password }}</span>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="user_photo" label="用户头像" width="180">
+                    <!--加入下面的内容,scope.row代表这一行,img是显示这一行的哪个字段,我的是img,你的自己看下-->
+                    <template slot-scope="scope">
+                        <img :src="scope.row.user_photo" width="80" height="80" alt="">
+                    </template>
+                </el-table-column>
+
+                <el-table-column label="操作">
+                    <template slot="header" slot-scope="scope">
+                        <el-input v-model="search"
+                                  size="mini"
+                                  placeholder="输入关键字搜索账号" />
+                    </template>
+                    <template slot-scope="scope">
+                        <el-button size="mini"
+                                   @@click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                        <el-button size="mini"
+                                   type="danger"
+                                   @@click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+            <!--分页-->
+            <div class="block">
+                <el-pagination @@size-change="handleSizeChange"
+                               @@current-change="handleCurrentChange"
+                               background
+                               :current-page="page"
+                               :page-sizes="[3, 6, 9, 20]"
+                               :hide-on-single-page="value"
+                               :page-size="limit"
+                               layout="total, sizes, prev, pager, next, jumper"
+                               :total="total">
+                </el-pagination>
+            </div>
+        </template>
+        <!--添加弹出窗-->
+        <el-dialog title="添加用户" :visible.sync="AddFormVisible" @@close='cloneWindows'>
+            <el-form :model="form" ref="form">
+                <el-form-item label="用户账号" :label-width="formLabelWidth"
+                              :rules="[{ required: true, message: '用户账号不能为空'}]"
+                              prop="user_Account">
+                    <el-input v-model="form.user_Account" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="用户密码" :label-width="formLabelWidth"
+                              :rules="[{ required: true, message: '用户密码不能为空'}]"
+                              prop="user_Password">
+                    <el-input v-model="form.user_Password" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="用户排序" :label-width="formLabelWidth">
+                    <el-input-number v-model="form.user_sort" :min="0" :max="10" label="描述文字"></el-input-number>
+                </el-form-item>
+
+                <el-form-item label="用户头像" :label-width="formLabelWidth"
+                              :rules="[{ required: true, message: '用户头像不能为空'}]"
+                              prop="user_photo">
+                    <!--上传头像-->
+                    <el-upload class="avatar-uploader"
+                               accept=".jpg,.png,.gif"
+                               @*drag="true"*@
+                               action="/HomePage/InsertPicture"
+                               :show-file-list="false"
+                               :on-success="handleAvatarSuccess"
+                               :before-upload="beforeAvatarUpload">
+                        <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                    </el-upload>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @@click="cloneWindows">取 消</el-button>
+                <el-button type="primary" @@click="handleAdd('form')">确 定</el-button>
+            </div>
+        </el-dialog>
+        <!--编辑弹出窗-->
+        <el-dialog title="修改用户" :visible.sync="PutFormVisible" @@close='cloneWindows'>
+            <el-form :model="form" ref="form">
+                <el-form-item label="用户账号" :label-width="formLabelWidth"
+                              :rules="[{ required: true, message: '用户账号不能为空'}]"
+                              prop="user_Account">
+                    <el-input v-model="form.user_Account" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="用户密码" :label-width="formLabelWidth"
+                              :rules="[{ required: true, message: '用户密码不能为空'}]"
+                              prop="user_Password">
+                    <el-input v-model="form.user_Password" autocomplete="off"></el-input>
+                </el-form-item>
+                <el-form-item label="用户排序" :label-width="formLabelWidth">
+                    <el-input-number v-model="form.user_sort" :min="0" :max="10" label="描述文字"></el-input-number>
+                </el-form-item>
+
+                <el-form-item label="用户头像" :label-width="formLabelWidth"
+                              :rules="[{ required: true, message: '用户头像不能为空'}]"
+                              prop="user_photo">
+                    <!--上传头像-->
+                    <el-upload class="avatar-uploader"
+                               accept=".jpg,.png,.gif"
+                               @*drag="true"*@
+                               action="/HomePage/InsertPicture"
+                               :show-file-list="false"
+                               :on-success="handleAvatarSuccess"
+                               :before-upload="beforeAvatarUpload">
+                        <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                    </el-upload>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @@click="cloneWindows">取 消</el-button>
+                <el-button type="primary" @@click="saveEdit('form')">确 定</el-button>
+            </div>
+        </el-dialog>
+    </div>
+</body>
+</html>
+<script>
+
+    var app = new Vue({
+        el: "#app",
+        data() {
+            return {
+                tableData: [],//显示的表格
+                loading: true,//加载动画
+                search: "",//搜索条件
+                AddFormVisible: false,//添加弹出层，默认隐藏
+                PutFormVisible: false,//修改弹出层，默认隐藏
+                form: {
+                    user_Account: '',
+                    user_Password: '',
+                    user_photo: '',
+                    user_sort: "",
+                },     //添加的表单
+                multipleSelection: [],//多选时选中的数据保存处
+                value: true,//只有一页时是否隐藏
+                formLabelWidth: '120px',//表单的长度
+                imageUrl: "",//图片预览的路径
+                page: 1,//当前页数
+                limit: 3,//每页个数
+                total: 30,//总条数
+                AllDelis: true,//批量删除按钮是否可见
+            }
+        },
+
+        //显示
+        mounted: function () {
+            this.loaddata();
+        },
+        methods: {
+            //加载数据方法
+            loaddata: function () {
+                axios.get('http://localhost:10627/api/User/GetUser', {
+                    params: {
+                        page: this.page,
+                        limit: this.limit,
+                    }
+                }).then(response => {
+                    this.tableData = response.data.result;
+                    this.total = response.data.total;
+                    this.loading = false;
+                }).catch(function (error) {
+                    console.log(error)
+                })
+            },
+            //添加
+            handleAdd(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        axios({
+                            url: 'http://localhost:10627/api/User/AddUser',
+                            method: 'post',
+                            data: JSON.stringify(this.form),
+                            headers: {
+                                'Content-type': 'application/json'
+                            }
+                        }).then(response => {
+                            if (response.data.code = 1) {
+                                this.$message.error('用户账号是重复的！');
+                            }
+                            else if (response.data.code == 2) {
+                                this.AddFormVisible = false;//关闭弹出框
+                                this.loaddata();
+                                this.$notify({
+                                    title: '新增成功',
+                                    message: '新增用户：' + this.form.user_Account + "成功！",
+                                    type: 'success'
+                                });
+                                this.form.user_Account = "";
+                                this.form.user_sort = "";
+                                this.form.user_Password = "";
+                                this.form.user_photo = "";
+                                this.imageUrl = "";
+                            } else {
+                                this.$message.error('新增失败');
+                            }
+                        }).catch(error => {
+                            console.log(error)
+                        })
+                    } else {
+                        console.log('error submit!!');
+                        this.$message.error('请您核对后提交！');
+                        return false;
+                    }
+                });
+
+            },
+            //修改弹框反填
+            handleEdit(index, row) {//index为当前行的索引，row为当前行，可以获得当前行的数据
+
+                this.form.use_Id = row.use_Id;
+                this.form.user_Account = row.user_Account;
+                this.form.user_Password = row.user_Password;
+                this.form.user_photo = row.user_photo;
+                this.imageUrl = row.user_photo;
+                this.form.user_sort = row.user_sort;
+                this.PutFormVisible = true;
+            },
+            //保存修改
+            saveEdit(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        axios({
+                            url: 'http://localhost:10627/api/User/PutUser',
+                            method: 'put',
+                            data: JSON.stringify(this.form),
+                            headers: {
+                                'Content-type': 'application/json'
+                            }
+                        }).then(response => {
+                            if (response.data.code = 1) {
+                                this.$message.error('用户账号是重复的！');
+                            }
+                            else if (response.data.code == 2) {
+                                this.PutFormVisible = false;
+                                this.loaddata();
+                                this.$notify({
+                                    title: '修改成功',
+                                    message: '修改用户：' + this.form.user_Account + "成功！",
+                                    type: 'success'
+                                });
+                                this.form.user_Account = "";
+                                this.form.user_Password = "";
+                                this.form.user_photo = "";
+                                this.imageUrl = "";
+                                this.form.user_sort = "";
+                            } else {
+                                this.$message.error('修改失败');
+                            }
+                        }).catch(error => {
+                            this.cloneWindows();
+                        })
+                    } else {
+                        console.log('error submit!!');
+                        this.$message.error('请您核对后提交！');
+                        return false;
+                    }
+                });
+            },
+            //点击关闭按钮后
+            cloneWindows() {
+                this.AddFormVisible = false;
+                this.PutFormVisible = false;
+                this.form.user_Account = "";
+                this.form.user_Password = "";
+                this.form.user_photo = "";
+                this.form.user_sort = "";
+                this.imageUrl = "";
+            },
+            //删除操作
+            handleDelete(index, row) {
+                this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    axios.delete('http://localhost:10627/api/User/DelUser', {
+                        params: {
+                            id: ("," + row.use_Id),
+                        }
+                    }).then(response => {
+                        if (response.data) {
+                            this.$nextTick(() => console.log("删除成功！"));
+                            this.loaddata();
+                            this.$notify({
+                                title: '删除成功',
+                                message: '删除用户：' + row.user_Account + "成功！",
+                                type: 'success'
+                            });
+                        } else {
+                            this.$message.error('删除失败')
+                        }
+                    }).catch(function (error) {
+                        console.log(error)
+                    })
+
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                });
+            },
+            //批量删除
+            AllDel() {
+                if (this.multipleSelection.length == 0)
+                    this.$message.error('您未选中任何数据！');
+                else {
+                    var str = "";
+                    var Names = "";
+                    this.multipleSelection.forEach(row => {
+                        str += "," + row.use_Id;
+                        Names += "," + row.user_Account;
+                    });
+                    this.$confirm('此操作将永久删除所有选中的文件, 是否继续?', '提示', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        type: 'warning'
+                    }).then(() => {
+                        axios.delete('http://localhost:10627/api/User/DelUser', {
+                            params: {
+                                id: str,
+                            }
+                        }).then(response => {
+                            if (response.data) {
+                                this.loaddata();
+                                this.$notify({
+                                    title: '删除成功',
+                                    message: '删除用户：' + Names.substring(1) + "   成功！",
+                                    type: 'success'
+                                });
+                            } else {
+                                this.$message.error('删除失败')
+                            }
+                        }).catch(function (error) {
+                            console.log(error)
+                        })
+
+                    }).catch(() => {
+                        this.$message({
+                            type: 'info',
+                            message: '已取消删除'
+                        });
+                    });
+                }
+            },
+            //显示序号
+            indexMethod(index) {
+                return index + 1;
+            },
+            //多选框
+            handleSelectionChange(val) {
+                this.multipleSelection = null;
+                this.multipleSelection = val;
+            },
+            //上传成功后
+            handleAvatarSuccess(res, file) {
+                this.imageUrl = URL.createObjectURL(file.raw);
+                this.form.user_photo = res.path;
+            },
+            //上传之前
+            beforeAvatarUpload(file) {
+                //const isJPG = file.type === 'image/png,/jpeg';
+                const isLt2M = file.size / 1024 / 1024 < 2;
+
+                //if (!isJPG) {
+                //    this.$message.error('上传头像图片只能是 JPG 格式!');
+                //}
+                if (!isLt2M) {
+                    this.$message.error('上传头像图片大小不能超过 2MB!');
+                }
+                return isLt2M;
+            },
+            // 当前页改变触发事件 val为当前选择页
+            handleSizeChange(val) {
+                this.limit = val;
+                this.loaddata();
+            },
+            //每页显示条数改变触发事件 val为当前每页显示条数
+            handleCurrentChange(val) {
+                this.page = val;
+                this.loaddata();
+            }
+        },
+    });
+
+</script>

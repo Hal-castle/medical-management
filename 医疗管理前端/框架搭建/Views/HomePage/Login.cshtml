@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/iconfont.css" />
+    <script src="~/js/jquery-3.3.1.js"></script>
+    <script src="~/js/jquery.unobtrusive-ajax.js"></script>
+    <title>登录界面</title>
+</head>
+<body onkeypress="search_enter()">
+    <div id="bigBox">
+        <h1>LOGIN</h1>
+        <div class="inputBox">
+            <div class="inputText">
+                <span class="iconfont icon-nickname"></span>
+                <input type="text" placeholder="Username" id="Account" value="xiaoniu" />
+            </div>
+            <div class="inputText">
+                <span class="iconfont icon-visible"></span>
+                <input type="password" placeholder="Password" id="Password" value="123" />
+            </div>
+        </div>
+        <input class="loginButton" onclick="go()" type="button" value="Login" />
+    </div>
+</body>
+</html>
+<script>
+    //$(document).ajaxStart(function () {
+    //    //show a progress modal of your choosing
+    //    showProgressModal('loading');
+    //});
+    //$(document).ajaxStop(function () {
+    //    //hide it
+    //    hideProgressModal();
+    //});
+    function go() {
+        var data = { "User_Account": $("#Account").val(), "User_Password": $("#Password").val() };
+        $.ajax({
+            url: "http://localhost:10284/api/WeatherForecast/Login",
+            type: 'post',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (result) {
+                console.log(result.token)
+                if (result.result) {
+                    alert("登录成功！")
+                    document.cookie = result.token;
+                    sessionStorage.setItem("token", result.token);
+                    sessionStorage.setItem("Account", result.User.Account);
+                    sessionStorage.setItem("Password", result.User.Password);
+                    location.href="/HomePage/Index"
+                }
+                else {
+                    alert("失败")
+                }
+            }
+        });
+    }
+    //敲回车键相当于确认键
+    function search_enter() {
+        //回车键的ASCII值是13
+        if (event.keyCode == 13) { //判断按下的是否是回车键
+            go();
+        }
+    }
+</script>

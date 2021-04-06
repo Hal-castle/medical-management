@@ -1,0 +1,14 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<script>
+    var currentCookie = sessionStorage.getItem("token");
+    var Account = sessionStorage.getItem("Account");
+    var Password = sessionStorage.getItem("Password");
+    if (currentCookie == null) {
+        location.href = "Shared/Error"
+    }
+</script>
+支付管理

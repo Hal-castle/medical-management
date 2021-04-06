@@ -1,0 +1,12 @@
+2021-04-05 19:00:59,876 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-04-05 19:00:59,888 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-04-05 19:00:59,890 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-04-05 19:01:15,300 [6] WARN  Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware - Failed to determine the https port for redirect.
+2021-04-05 19:08:11,714 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-04-05 19:08:11,735 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-04-05 19:08:11,738 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-04-05 19:08:55,209 [6] WARN  Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware - Failed to determine the https port for redirect.
+2021-04-05 19:22:30,256 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-04-05 19:22:30,287 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-04-05 19:22:30,291 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-04-05 19:23:07,853 [17] WARN  Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware - Failed to determine the https port for redirect.

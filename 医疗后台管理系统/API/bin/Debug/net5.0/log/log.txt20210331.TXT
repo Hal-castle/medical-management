@@ -1,0 +1,49 @@
+2021-03-31 18:05:30,346 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-03-31 18:05:30,360 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-03-31 18:05:30,363 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-03-31 18:08:17,084 [7] WARN  Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware - Failed to determine the https port for redirect.
+2021-03-31 18:08:35,525 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-03-31 18:08:35,552 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-03-31 18:08:35,556 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-03-31 18:09:15,406 [15] WARN  Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware - Failed to determine the https port for redirect.
+2021-03-31 18:09:15,540 [15] INFO  API.Utility.CustomActionFilterAttribute - 日志现在创建了
+2021-03-31 18:09:15,555 [15] INFO  API.Controllers.WeatherForecastController - 控制器被构造
+2021-03-31 18:09:49,800 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-03-31 18:09:49,822 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-03-31 18:09:49,824 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-03-31 18:09:57,954 [14] WARN  Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware - Failed to determine the https port for redirect.
+2021-03-31 18:09:58,078 [14] INFO  API.Utility.CustomActionFilterAttribute - 日志现在创建了
+2021-03-31 18:10:05,203 [14] INFO  API.Controllers.WeatherForecastController - 控制器被构造
+2021-03-31 18:29:05,501 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-03-31 18:29:05,524 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-03-31 18:29:05,528 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-03-31 18:31:33,975 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-03-31 18:31:34,007 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-03-31 18:31:34,016 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-03-31 18:51:45,856 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-03-31 18:51:45,886 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-03-31 18:51:45,889 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-03-31 18:52:53,517 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-03-31 18:52:53,553 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-03-31 18:52:53,563 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-03-31 18:54:35,288 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-03-31 18:54:35,332 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-03-31 18:54:35,356 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-03-31 18:57:07,711 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-03-31 18:57:07,745 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-03-31 18:57:07,750 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-03-31 19:00:32,569 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-03-31 19:00:32,598 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-03-31 19:00:32,603 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-03-31 19:01:08,460 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-03-31 19:01:08,492 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-03-31 19:01:08,497 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-03-31 19:03:11,424 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-03-31 19:03:11,460 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-03-31 19:03:11,465 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-03-31 19:18:52,003 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-03-31 19:18:52,033 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-03-31 19:18:52,038 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-03-31 20:18:06,151 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-03-31 20:18:06,183 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-03-31 20:18:06,189 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API

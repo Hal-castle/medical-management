@@ -1,0 +1,218 @@
+2021-04-04 16:57:35,521 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-04-04 16:57:35,531 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-04-04 16:57:35,533 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-04-04 16:57:35,597 [6] WARN  Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware - Failed to determine the https port for redirect.
+2021-04-04 16:57:59,442 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-04-04 16:57:59,472 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-04-04 16:57:59,476 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-04-04 16:57:59,603 [5] WARN  Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware - Failed to determine the https port for redirect.
+2021-04-04 17:06:59,195 [19] ERROR Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+System.Data.SqlClient.SqlException (0x80131904): 当 IDENTITY_INSERT 设置为 OFF 时，不能为表 'Tb_Role' 中的标识列插入显式值。
+   at SqlSugar.AdoProvider.ExecuteCommand(String sql, SugarParameter[] parameters)
+   at SqlSugar.InsertableProvider`1.ExecuteCommand()
+   at SqlSugar.SimpleClient`1.Insert(T insertObj)
+   at Command.DbContext`1.Insert(T obj) in C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\Command\DbContext.cs:line 193
+   at API.Controllers.UserController.AddRole(Tb_Role student) in C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API\Controllers\UserController.cs:line 65
+   at lambda_method6(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+ClientConnectionId:01f1ad25-d6ae-46e6-ab6c-9c82714d777a
+Error Number:544,State:1,Class:16
+2021-04-04 17:21:39,795 [64] ERROR Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+SqlSugar.SqlSugarException: You cannot have no primary key and no conditions
+   at SqlSugar.Check.Exception(Boolean isException, String message, String[] args)
+   at SqlSugar.UpdateableProvider`1._ExecuteCommand()
+   at SqlSugar.UpdateableProvider`1.ExecuteCommand()
+   at SqlSugar.SimpleClient`1.Update(T updateObj)
+   at Command.DbContext`1.Update(T obj) in C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\Command\DbContext.cs:line 167
+   at API.Controllers.UserController.PutUser(Tb_User stu) in C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API\Controllers\UserController.cs:line 44
+   at lambda_method10(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-04-04 17:35:58,373 [74] ERROR Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+System.Data.SqlClient.SqlException (0x80131904): 当 IDENTITY_INSERT 设置为 OFF 时，不能为表 'Tb_Role' 中的标识列插入显式值。
+   at SqlSugar.AdoProvider.ExecuteCommand(String sql, SugarParameter[] parameters)
+   at SqlSugar.InsertableProvider`1.ExecuteCommand()
+   at SqlSugar.SimpleClient`1.Insert(T insertObj)
+   at Command.DbContext`1.Insert(T obj) in C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\Command\DbContext.cs:line 193
+   at API.Controllers.UserController.AddRole(Tb_Role student) in C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API\Controllers\UserController.cs:line 65
+   at lambda_method6(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+ClientConnectionId:f4936f24-7abf-4cdc-b9c3-e891df88b81f
+Error Number:544,State:1,Class:16
+2021-04-04 17:36:52,311 [73] ERROR Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+System.Data.SqlClient.SqlException (0x80131904): 当 IDENTITY_INSERT 设置为 OFF 时，不能为表 'Tb_Role' 中的标识列插入显式值。
+   at SqlSugar.AdoProvider.ExecuteCommand(String sql, SugarParameter[] parameters)
+   at SqlSugar.InsertableProvider`1.ExecuteCommand()
+   at SqlSugar.SimpleClient`1.Insert(T insertObj)
+   at Command.DbContext`1.Insert(T obj) in C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\Command\DbContext.cs:line 193
+   at API.Controllers.UserController.AddRole(Tb_Role student) in C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API\Controllers\UserController.cs:line 65
+   at lambda_method6(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+ClientConnectionId:f4936f24-7abf-4cdc-b9c3-e891df88b81f
+Error Number:544,State:1,Class:16
+2021-04-04 17:54:40,827 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-04-04 17:54:40,856 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-04-04 17:54:40,859 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-04-04 17:55:29,721 [16] WARN  Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware - Failed to determine the https port for redirect.
+2021-04-04 19:09:16,360 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-04-04 19:09:16,390 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-04-04 19:09:16,398 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-04-04 19:09:16,487 [7] WARN  Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware - Failed to determine the https port for redirect.
+2021-04-04 19:22:56,062 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-04-04 19:22:56,096 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-04-04 19:22:56,100 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-04-04 19:22:56,176 [4] WARN  Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware - Failed to determine the https port for redirect.
+2021-04-04 19:26:12,117 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-04-04 19:26:12,140 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-04-04 19:26:12,145 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-04-04 19:26:41,849 [16] WARN  Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware - Failed to determine the https port for redirect.
+2021-04-04 19:28:29,247 [23] ERROR Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at API.Controllers.UserController.RoleAddJur(String id) in C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API\Controllers\UserController.cs:line 90
+   at lambda_method12(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-04-04 19:30:12,602 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-04-04 19:30:12,630 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-04-04 19:30:12,682 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-04-04 19:30:12,769 [9] WARN  Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware - Failed to determine the https port for redirect.
+2021-04-04 19:31:18,933 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-04-04 19:31:18,961 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-04-04 19:31:18,964 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-04-04 19:31:33,848 [5] WARN  Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware - Failed to determine the https port for redirect.
+2021-04-04 19:36:14,702 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-04-04 19:36:14,726 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-04-04 19:36:14,729 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-04-04 19:36:14,843 [5] WARN  Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware - Failed to determine the https port for redirect.
+2021-04-04 19:38:16,598 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-04-04 19:38:16,620 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-04-04 19:38:16,629 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-04-04 19:38:16,729 [5] WARN  Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware - Failed to determine the https port for redirect.
+2021-04-04 19:42:29,824 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-04-04 19:42:29,846 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-04-04 19:42:29,848 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-04-04 19:42:46,958 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-04-04 19:42:47,001 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-04-04 19:42:47,007 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-04-04 19:46:16,720 [1] INFO  Microsoft.Hosting.Lifetime - Application started. Press Ctrl+C to shut down.
+2021-04-04 19:46:16,750 [1] INFO  Microsoft.Hosting.Lifetime - Hosting environment: Development
+2021-04-04 19:46:16,759 [1] INFO  Microsoft.Hosting.Lifetime - Content root path: C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API
+2021-04-04 19:49:37,171 [6] WARN  Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware - Failed to determine the https port for redirect.
+2021-04-04 20:03:00,485 [75] ERROR Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+System.Data.SqlClient.SqlException (0x80131904): DELETE 语句与 REFERENCE 约束"FK__User_Role__Use_I__145C0A3F"冲突。该冲突发生于数据库"Text1"，表"dbo.User_Role", column 'Use_Id'。
+语句已终止。
+   at SqlSugar.AdoProvider.ExecuteCommand(String sql, SugarParameter[] parameters)
+   at SqlSugar.DeleteableProvider`1.ExecuteCommand()
+   at Command.DbContext`1.Delete(Object[] ids) in C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\Command\DbContext.cs:line 143
+   at API.Controllers.UserController.DelUser(String id) in C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API\Controllers\UserController.cs:line 39
+   at lambda_method28(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+ClientConnectionId:a00e071f-a4bd-4940-8a82-911b9a8360f0
+Error Number:547,State:0,Class:16
+2021-04-04 20:03:41,922 [79] ERROR Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware - An unhandled exception has occurred while executing the request.
+System.Data.SqlClient.SqlException (0x80131904): DELETE 语句与 REFERENCE 约束"FK__User_Role__Use_I__145C0A3F"冲突。该冲突发生于数据库"Text1"，表"dbo.User_Role", column 'Use_Id'。
+语句已终止。
+   at SqlSugar.AdoProvider.ExecuteCommand(String sql, SugarParameter[] parameters)
+   at SqlSugar.DeleteableProvider`1.ExecuteCommand()
+   at Command.DbContext`1.Delete(Object[] ids) in C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\Command\DbContext.cs:line 143
+   at API.Controllers.UserController.DelUser(String id) in C:\Users\29462\Desktop\医疗后台管理系统全部\医疗后台管理系统\API\Controllers\UserController.cs:line 39
+   at lambda_method28(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Logged|12_1(ControllerActionInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+ClientConnectionId:a00e071f-a4bd-4940-8a82-911b9a8360f0
+Error Number:547,State:0,Class:16

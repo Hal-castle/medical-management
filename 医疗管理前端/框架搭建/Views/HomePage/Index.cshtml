@@ -1,0 +1,168 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        var currentCookie = sessionStorage.getItem("token");
+        var Account =sessionStorage.getItem("Account");
+        var Password = sessionStorage.getItem("Password");
+        if (currentCookie == null) {
+            location.href = "Shared/Error"
+        }
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index</title>
+    <link href="~/css/main.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/element-ui/theme-chalk/index.css" rel="stylesheet" />
+    <script src="~/lib/vue/vue.js"></script>
+    <script src="//unpkg.com/element-ui@2.15.1/lib/index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <el-container>
+            <el-container>
+                <el-aside class="left" width="230px">
+                    <el-menu default-active='1'
+                             :default-openeds="['1','1-2']"
+                             class="el-menu-vertical-demo"
+                             background-color="rgba(34, 62, 156, 1)"
+                             text-color="white"
+                             active-text-color="#ffd04b"
+                             style="height:100%;">
+                        <el-submenu index="1">
+                            <template slot="title">
+                                <i class="el-icon-menu" style="margin-left:-140px;color:white"></i>
+                                <span>菜单</span>
+                            </template>
+                                <el-menu-item index="1-2-3">
+                                    <a href="/HomePage/Pandect_management" target="management">
+                                        <i class="el-icon-folder-opened" style="color:white"></i>
+                                        总览
+                                    </a>
+                                </el-menu-item>
+                                <el-menu-item-group v-for="p in tabledata" v-bind:key="p.Jur_Id">
+                                    <a :href="p.Jur_Url" target="management">
+                                        <el-menu-item :index="p.Jur_Id" :title="p.Jur_describe">
+                                            <i :class="p.Jur_icon" style="color:white"></i>
+                                            {{p.Jur_Name}}
+                                        </el-menu-item>
+                                    </a>
+                                </el-menu-item-group>
+                        </el-submenu>
+
+                    </el-menu>
+                </el-aside>
+                <el-container>
+                    <el-header>
+                        <el-row>
+                            <el-col :span="8">
+                                <div class="grid-content bg-purple">
+                                    <template>
+                                        <el-button type="text" @@click="Exit">注销登录</el-button>
+                                    </template>
+                                    <img src="~/Img/1032615.png" style="width:60px;height:60px;border-radius:14px;" />
+                                    <span style="color:white;font-size:30px">欢迎回来，</span>
+                                    <span style="color:white;font-size:30px">
+                                        <img :src="User.Photo" style="width:55px;height:55px;border-radius:50px;" /><span style="position:absolute;top:10px">当前登录用户：<strong style="color:red">{{User.Account}}</strong></span>
+                                    </span>
+                                </div>
+                            </el-col>
+                            <el-col :span="16">
+                                <div class="grid-content bg-purple" style="margin-left:100px">
+                                    <span id="show" style="color:white;font-size:41px">时间</span>
+                                </div>
+                            </el-col>
+                        </el-row>
+                    </el-header>
+                    <el-main>
+                        @*;background-image:url(/Img/1001010.jpg)*@
+                        <iframe style="width:100%; height:99.32%" frameborder="0" name="management"></iframe>
+                    </el-main>
+                </el-container>
+            </el-container>
+        </el-container>
+    </div>
+    <script src="~/lib/vue/vue.js"></script>
+    <script src="~/js/jquery-3.3.1.js"></script>
+    <script src="~/lib/vue/vue.min.js"></script>
+    <script src="~/lib/element-ui/index.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script src="~/js/site.js"></script>
+</body>
+</html>
+<script>
+    let a = new Vue({
+        el: "#app",
+        data: function () {
+            return {
+                tabledata: [],
+                User: { Photo: "~/Img/下载.jfif", Account: "请您先登录" },
+            }
+        },
+        mounted: function () {
+            var u = {};
+            u.User_Account = Account;
+            u.User_Password = Password;
+            axios({
+                url: 'http://localhost:10284/api/WeatherForecast/GetMenu',
+                method: 'post',
+                data: JSON.stringify(u),
+                headers: {
+                    "Authorization": 'Bearer  ' + currentCookie, 
+                    'Content-type': 'application/json'
+                }
+            }).then(res => {
+                this.User.Account = res.data[0].User_Account;
+                this.User.Photo = res.data[0].User_photo;
+                console.log(this.User.Account)
+                console.log(this.User.Photo)
+                this.tabledata = res.data;
+                var URL = "";
+                this.tabledata.forEach(function (d) {
+                    URL += "," + d.Jur_Url;
+                })
+                axios.get("/HomePage/Save?URL=" + URL);
+            }).catch(error => {
+                console.log(error)
+            })
+        },
+        methods: {
+            handleOpen(key, keyPath) {
+                console.log(key, keyPath);
+            },
+            handleClose(key, keyPath) {
+                console.log(key, keyPath);
+            },
+            Exit() {
+               
+                this.$confirm('您确定要注销登录吗?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    sessionStorage.removeItem("token");//删除数据
+                    this.$message({
+                        type: 'success',
+                        message: '注销成功!',
+                    });
+                    location.href = "/HomePage/Login"
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消注销'
+                    });
+                });
+            },
+        }
+    })
+    //var currentCookie = document.cookie.split(";")[0];
+</script>

@@ -1,0 +1,75 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>权限管理</title>
+    <link href="~/css/main.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/element-ui/theme-chalk/index.css" rel="stylesheet" />
+    <script src="~/lib/vue/vue.js"></script>
+    <script src="//unpkg.com/element-ui@2.15.1/lib/index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="button" v-on:click="PutFormVisible = true" value="俺妞妞" />
+        <input type="button" v-on:click="AddFormVisible = true" value="和牛逼" />
+        <!--添加弹出窗-->
+        <el-dialog title="修改权限" :visible.sync="PutFormVisible" @@close="cloneWindows('form')">
+            <el-form :model="form" ref="form">
+                <el-form-item label="权限名称" :label-width="formLabelWidth" prop="jur_Name">
+                    <el-input v-model="form.jur_Name" autocomplete="off"></el-input>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @@click="cloneWindows('form')">取 消</el-button>
+            </div>
+        </el-dialog>
+        <!--添加弹出窗-->
+        <el-dialog title="添加权限" :visible.sync="AddFormVisible" @@close="cloneWindows('form')">
+            <el-form :model="form" ref="form">
+                <el-form-item label="权限名称" :label-width="formLabelWidth" prop="jur_Name"
+                               :rules="[{ required: true, message: '年龄不能为空'},{ type: 'number', message: '年龄必须为数字值'}]"
+                              >
+                    <el-input v-model="form.jur_Name" autocomplete="off"></el-input>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @@click="cloneWindows('form')">取 消</el-button>
+            </div>
+        </el-dialog>
+    </div>
+</body>
+</html>
+<script>
+
+    var app = new Vue({
+        el: "#app",
+        data() {
+            return {
+                form: {
+                    jur_Name: '',
+                },     //添加的表单
+                PutFormVisible: false,
+                AddFormVisible:false,
+                formLabelWidth: '120px',//表单的长度
+            }
+        },
+        methods: {
+            //点击关闭按钮后
+            cloneWindows(formName) {
+                console.log("Niubi")
+                this.$nextTick(() => {
+                    this.$refs[formName].resetFields();
+                })
+            },
+        },
+    });
+
+</script>

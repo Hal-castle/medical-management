@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\echarts-5.0.2\.vscode\settings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\echarts-5.0.2\.github\ISSUE_TEMPLATE.md" />
+    <None Include="wwwroot\echarts-5.0.2\.github\pull_request_template.md" />
+    <None Include="wwwroot\echarts-5.0.2\.github\stale.yml" />
+    <None Include="wwwroot\echarts-5.0.2\.github\workflows\nodejs.yml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+</Project>
